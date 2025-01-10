@@ -1,39 +1,49 @@
 using UnityEngine;
-using TMPro; // TextMeshPro için gerekli namespace
+using TMPro;
 
 public class Raycast : MonoBehaviour
 {
-    public TextMeshProUGUI hitText; // TextMeshProUGUI referansý
+    public TextMeshProUGUI hitText; // TextMeshPro referansý
+    public Camera mainCamera; // Ana kamera referansý
+    public RenderTexture renderTexture; // Kullanýlan Render Texture
+    public float rayLength = 100f; // Ray'in maksimum uzunluðu
+    public Color rayColor = Color.red; // Ray'in rengi
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // Baþlangýçta hitText'in boþ olduðundan emin olun
         if (hitText != null)
         {
             hitText.text = "";
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // Ekranýn ortasýndan bir ray oluþtur
-        Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+        if (mainCamera == null || renderTexture == null)
+        {
+            Debug.LogError("Ana kamera veya Render Texture atanmadý!");
+            return;
+        }
+
+        // Render Texture'un boyutlarýna göre ekran ortasýný hesapla
+        Vector3 renderTextureCenter = new Vector3(renderTexture.width / 2, renderTexture.height / 2, 0);
+
+        // Render Texture boyutlarýna göre bir ray oluþtur
+        Ray ray = mainCamera.ScreenPointToRay(renderTextureCenter);
         RaycastHit hit;
 
-        // Eðer ray bir objeye çarparsa
-        if (Physics.Raycast(ray, out hit))
+        // Debug.DrawRay ile ray'i çiz
+        Debug.DrawRay(ray.origin, ray.direction * rayLength, rayColor);
+
+        if (Physics.Raycast(ray, out hit, rayLength))
         {
-            // Çarpýlan objenin ismini TextMeshPro'ya yazdýr
             if (hitText != null)
             {
-                hitText.text = hit.collider.gameObject.name;
+                hitText.text = "Çarpýlan obje: " + hit.collider.gameObject.name;
             }
         }
         else
         {
-            // Eðer hiçbir objeye çarpmazsa, TextMeshPro'yu temizle
             if (hitText != null)
             {
                 hitText.text = "";
