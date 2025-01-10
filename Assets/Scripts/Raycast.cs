@@ -41,9 +41,11 @@ public class Raycast : MonoBehaviour
             {
                 hitText.text = hit.collider.gameObject.name;
             }
-            if (Input.GetKeyDown(KeyCode.E))
+
+            // Eðer ray'in çarptýðý nesne "Silinebilir" etikete sahipse
+            if (Input.GetKeyDown(KeyCode.E) && hit.collider.CompareTag("Silinebilir"))
             {
-                // Çarpýlan nesneyi sahneden yok ediyoruz.
+                // Çarpýlan nesneyi sahneden yok et
                 Destroy(hit.collider.gameObject);
             }
         }
