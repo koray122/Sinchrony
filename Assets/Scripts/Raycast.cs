@@ -41,6 +41,11 @@ public class Raycast : MonoBehaviour
             {
                 hitText.text = hit.collider.gameObject.name;
             }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                // Çarpýlan nesneyi sahneden yok ediyoruz.
+                Destroy(hit.collider.gameObject);
+            }
         }
         else
         {
