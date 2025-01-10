@@ -39,7 +39,7 @@ public class Raycast : MonoBehaviour
         {
             if (hitText != null)
             {
-                hitText.text = "Çarpýlan obje: " + hit.collider.gameObject.name;
+                hitText.text = hit.collider.gameObject.name;
             }
         }
         else
