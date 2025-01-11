@@ -1330,7 +1330,7 @@ MonoBehaviour:
   player: {fileID: 914429461}
   noteCanvas: {fileID: 1007328973}
   noteTextAreaUI: {fileID: 2065155731}
-  noteText: YARRRRRRRAK
+  noteText: "Bu notu a\xE7t\u0131n\u0131z."
   openEvent:
     m_PersistentCalls:
       m_Calls: []
