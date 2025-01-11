@@ -9,6 +9,8 @@ public class Raycast : MonoBehaviour
     public float rayLength = 100f; // Ray'in maksimum uzunluðu
     public Color rayColor = Color.red; // Ray'in rengi
 
+    private NoteController currentNoteController; // Aktif NoteController referansý
+
     void Start()
     {
         if (hitText != null)
@@ -42,6 +44,31 @@ public class Raycast : MonoBehaviour
                 hitText.text = hit.collider.gameObject.name;
             }
 
+            // NoteController kontrolü
+            NoteController noteController = hit.collider.GetComponent<NoteController>();
+            if (noteController != null)
+            {
+                // Eðer bir NoteController'a raycast ediliyorsa
+                if (Input.GetKeyDown(KeyCode.T))
+                {
+                    // Notu aç veya kapat
+                    if (currentNoteController == noteController)
+                    {
+                        currentNoteController.HideNote();
+                        currentNoteController = null;
+                    }
+                    else
+                    {
+                        if (currentNoteController != null)
+                        {
+                            currentNoteController.HideNote();
+                        }
+                        currentNoteController = noteController;
+                        currentNoteController.ShowNote();
+                    }
+                }
+            }
+
             // Eðer ray'in çarptýðý nesne "Silinebilir" etikete sahipse
             if (Input.GetKeyDown(KeyCode.E) && hit.collider.CompareTag("Silinebilir"))
             {
@@ -54,6 +81,13 @@ public class Raycast : MonoBehaviour
             if (hitText != null)
             {
                 hitText.text = "";
+            }
+
+            // Eðer raycast baþka bir yere gidiyorsa notu kapat
+            if (currentNoteController != null)
+            {
+                currentNoteController.HideNote();
+                currentNoteController = null;
             }
         }
     }
