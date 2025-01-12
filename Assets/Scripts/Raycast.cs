@@ -10,12 +10,20 @@ public class Raycast : MonoBehaviour
     public Color rayColor = Color.red; // Ray'in rengi
 
     private NoteController currentNoteController; // Aktif NoteController referansý
+    private Inventory inventory; // Envanter referansý
 
     void Start()
     {
         if (hitText != null)
         {
-            hitText.text = "";
+            hitText.text = ""; // Baþlangýçta hitText'in boþ olduðundan emin olun
+        }
+
+        // Inventory bileþenini bul
+        inventory = FindObjectOfType<Inventory>();
+        if (inventory == null)
+        {
+            Debug.LogError("Inventory bileþeni bulunamadý!"); // Inventory bileþeni bulunamazsa hata mesajý ver
         }
     }
 
@@ -23,7 +31,7 @@ public class Raycast : MonoBehaviour
     {
         if (mainCamera == null || renderTexture == null)
         {
-            Debug.LogError("Ana kamera veya Render Texture atanmadý!");
+            Debug.LogError("Ana kamera veya Render Texture atanmadý!"); // Ana kamera veya Render Texture atanmadýysa hata mesajý ver
             return;
         }
 
@@ -39,49 +47,49 @@ public class Raycast : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, rayLength))
         {
-            GameObject hitObject = hit.collider.gameObject;
+            GameObject hitObject = hit.collider.gameObject; // Ray'in çarptýðý objeyi al
 
             // Nesne etiketi kontrolü
             if (hitText != null)
             {
                 if (hitObject.CompareTag("Silinebilir"))
                 {
-                    hitText.text = $"Envantere ekle: {hitObject.name}";
+                    hitText.text = $"Envantere ekle: {hitObject.name}"; // Silinebilir nesneye çarptýysa hitText'i güncelle
                     if (Input.GetKeyDown(KeyCode.E))
                     {
-                        Destroy(hitObject);
+                        inventory.AddItem(hitObject); // E tuþuna basýldýðýnda nesneyi envantere ekle
                     }
                 }
                 else if (hitObject.CompareTag("Tasinabilir"))
                 {
-                    hitText.text = $"Al: {hitObject.name}";
+                    hitText.text = $"Al: {hitObject.name}"; // Taþýnabilir nesneye çarptýysa hitText'i güncelle
                     // Taþýma iþlemi `PickUp` scripti ile zaten kontrol ediliyor.
                 }
                 else if (hitObject.CompareTag("Okunabilir"))
                 {
-                    hitText.text = $"Oku: {hitObject.name}";
+                    hitText.text = $"Oku: {hitObject.name}"; // Okunabilir nesneye çarptýysa hitText'i güncelle
                     NoteController noteController = hitObject.GetComponent<NoteController>();
                     if (noteController != null && Input.GetKeyDown(KeyCode.T))
                     {
                         if (currentNoteController == noteController)
                         {
-                            currentNoteController.HideNote();
+                            currentNoteController.HideNote(); // Ayný notu tekrar okuduðunda notu gizle
                             currentNoteController = null;
                         }
                         else
                         {
                             if (currentNoteController != null)
                             {
-                                currentNoteController.HideNote();
+                                currentNoteController.HideNote(); // Baþka bir not okunuyorsa önceki notu gizle
                             }
                             currentNoteController = noteController;
-                            currentNoteController.ShowNote();
+                            currentNoteController.ShowNote(); // Yeni notu göster
                         }
                     }
                 }
                 else
                 {
-                    hitText.text = hitObject.name;
+                    hitText.text = hitObject.name; // Diðer nesneler için hitText'i güncelle
                 }
             }
         }
@@ -89,13 +97,13 @@ public class Raycast : MonoBehaviour
         {
             if (hitText != null)
             {
-                hitText.text = "";
+                hitText.text = ""; // Ray hiçbir þeye çarpmadýysa hitText'i temizle
             }
 
             // Eðer raycast baþka bir yere gidiyorsa notu kapat
             if (currentNoteController != null)
             {
-                currentNoteController.HideNote();
+                currentNoteController.HideNote(); // Aktif notu gizle
                 currentNoteController = null;
             }
         }

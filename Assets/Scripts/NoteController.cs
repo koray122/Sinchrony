@@ -25,24 +25,24 @@ public class NoteController : MonoBehaviour
     public void ShowNote()
     {
         // Notu göster
-        noteTextAreaUI.text = noteText;
-        noteCanvas.SetActive(true);
-        openEvent.Invoke();
+        noteTextAreaUI.text = noteText; // Not metnini UI Text alanýna yaz
+        noteCanvas.SetActive(true); // Not UI panelini aktif et
+        openEvent.Invoke(); // Not açýldýðýnda çalýþtýrýlacak event'i tetikle
         DisablePlayer(true); // Oyuncu hareketini devre dýþý býrak
-        isOpen = true;
+        isOpen = true; // Notun açýk olduðunu belirt
     }
 
     public void HideNote()
     {
-        DisableNote();
+        DisableNote(); // Notu kapat
     }
 
     private void DisableNote()
     {
         // Notu kapat
-        noteCanvas.SetActive(false);
+        noteCanvas.SetActive(false); // Not UI panelini devre dýþý býrak
         DisablePlayer(false); // Oyuncu hareketini etkinleþtir
-        isOpen = false;
+        isOpen = false; // Notun kapalý olduðunu belirt
     }
 
     private void DisablePlayer(bool disable)
@@ -51,11 +51,11 @@ public class NoteController : MonoBehaviour
         var characterController = player.GetComponent<CharacterController>();
         if (characterController != null)
         {
-            characterController.enabled = !disable;
+            characterController.enabled = !disable; // CharacterController'ý etkinleþtir/devre dýþý býrak
         }
         else
         {
-            Debug.LogWarning("Player object does not have a CharacterController component!");
+            Debug.LogWarning("Player object does not have a CharacterController component!"); // Oyuncu objesinde CharacterController yoksa uyarý ver
         }
     }
 
@@ -64,7 +64,7 @@ public class NoteController : MonoBehaviour
         // Not açýksa ve kapama tuþuna basýlýrsa notu kapat
         if (isOpen && Input.GetKeyDown(closeKey))
         {
-            DisableNote();
+            DisableNote(); // Notu kapat
         }
     }
 }
