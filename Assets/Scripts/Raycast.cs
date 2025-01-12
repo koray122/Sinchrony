@@ -39,41 +39,50 @@ public class Raycast : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, rayLength))
         {
+            GameObject hitObject = hit.collider.gameObject;
+
+            // Nesne etiketi kontrolü
             if (hitText != null)
             {
-                hitText.text = hit.collider.gameObject.name;
-            }
-
-            // NoteController kontrolü
-            NoteController noteController = hit.collider.GetComponent<NoteController>();
-            if (noteController != null)
-            {
-                // Eðer bir NoteController'a raycast ediliyorsa
-                if (Input.GetKeyDown(KeyCode.T))
+                if (hitObject.CompareTag("Silinebilir"))
                 {
-                    // Notu aç veya kapat
-                    if (currentNoteController == noteController)
+                    hitText.text = $"Envantere ekle: {hitObject.name}";
+                    if (Input.GetKeyDown(KeyCode.E))
                     {
-                        currentNoteController.HideNote();
-                        currentNoteController = null;
-                    }
-                    else
-                    {
-                        if (currentNoteController != null)
-                        {
-                            currentNoteController.HideNote();
-                        }
-                        currentNoteController = noteController;
-                        currentNoteController.ShowNote();
+                        Destroy(hitObject);
                     }
                 }
-            }
-
-            // Eðer ray'in çarptýðý nesne "Silinebilir" etikete sahipse
-            if (Input.GetKeyDown(KeyCode.E) && hit.collider.CompareTag("Silinebilir"))
-            {
-                // Çarpýlan nesneyi sahneden yok et
-                Destroy(hit.collider.gameObject);
+                else if (hitObject.CompareTag("Tasinabilir"))
+                {
+                    hitText.text = $"Al: {hitObject.name}";
+                    // Taþýma iþlemi `PickUp` scripti ile zaten kontrol ediliyor.
+                }
+                else if (hitObject.CompareTag("Okunabilir"))
+                {
+                    hitText.text = $"Oku: {hitObject.name}";
+                    NoteController noteController = hitObject.GetComponent<NoteController>();
+                    if (noteController != null && Input.GetKeyDown(KeyCode.T))
+                    {
+                        if (currentNoteController == noteController)
+                        {
+                            currentNoteController.HideNote();
+                            currentNoteController = null;
+                        }
+                        else
+                        {
+                            if (currentNoteController != null)
+                            {
+                                currentNoteController.HideNote();
+                            }
+                            currentNoteController = noteController;
+                            currentNoteController.ShowNote();
+                        }
+                    }
+                }
+                else
+                {
+                    hitText.text = hitObject.name;
+                }
             }
         }
         else

@@ -7,6 +7,8 @@ TagManager:
   - CinemachineTarget
   - Silinebilir
   - PickUp
+  - Tasinabilir
+  - Okunabilir
   layers:
   - Default
   - TransparentFX
