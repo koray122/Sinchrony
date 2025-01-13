@@ -6,7 +6,9 @@ public class InventoryUI : MonoBehaviour
 {
     public TextMeshProUGUI itemNamesText; // Envanterdeki öðelerin isimlerini gösterecek TextMeshPro bileþeni
     public TextMeshProUGUI itemQuantitiesText; // Envanterdeki öðelerin miktarlarýný gösterecek TextMeshPro bileþeni
-    public Inventory inventory; // Envanter referansý
+    public Inventory inventory; //
+                                //
+                                //Envanter referansý
 
     void Start()
     {

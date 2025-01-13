@@ -8240,7 +8240,7 @@ PrefabInstance:
       objectReference: {fileID: 422245357}
     - target: {fileID: 5676494229184719182, guid: 7530674bb9ee18046a56ea870a5fe558, type: 3}
       propertyPath: noteText
-      value: HEBEBEBEBEBELELELELE
+      value: MAL SENA
       objectReference: {fileID: 0}
     - target: {fileID: 5676494229184719182, guid: 7530674bb9ee18046a56ea870a5fe558, type: 3}
       propertyPath: noteCanvas
