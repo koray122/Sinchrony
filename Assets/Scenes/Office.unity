@@ -9374,6 +9374,18 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7201058906186528582, guid: efa17f060017ad04db40c2ac81735d9a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7201058906186528582, guid: efa17f060017ad04db40c2ac81735d9a, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7201058906186528582, guid: efa17f060017ad04db40c2ac81735d9a, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7988054839052031799, guid: efa17f060017ad04db40c2ac81735d9a, type: 3}
       propertyPath: m_Name
       value: TV
