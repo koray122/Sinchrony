@@ -10,6 +10,7 @@ TagManager:
   - Tasinabilir
   - Okunabilir
   - Inventory
+  - Item
   layers:
   - Default
   - TransparentFX
