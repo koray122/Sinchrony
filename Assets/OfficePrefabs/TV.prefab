@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2808195971035098137}
   - component: {fileID: 5266291715042694934}
   m_Layer: 0
-  m_Name: Panasonic VHS TV
+  m_Name: TV
   m_TagString: PickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

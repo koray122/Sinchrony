@@ -9,6 +9,7 @@ TagManager:
   - PickUp
   - Tasinabilir
   - Okunabilir
+  - Inventory
   layers:
   - Default
   - TransparentFX

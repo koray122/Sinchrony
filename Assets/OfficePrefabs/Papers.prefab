@@ -10,27 +10,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: aec269c980d90fc4b9175c0fd94c7db2, type: 3}
       propertyPath: m_LocalScale.x
-      value: 10.863181
+      value: 8.802932
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: aec269c980d90fc4b9175c0fd94c7db2, type: 3}
       propertyPath: m_LocalScale.y
-      value: 17.371803
+      value: 14.077166
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: aec269c980d90fc4b9175c0fd94c7db2, type: 3}
       propertyPath: m_LocalScale.z
-      value: 17.371803
+      value: 14.077166
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: aec269c980d90fc4b9175c0fd94c7db2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.9182315
+      value: -17.701958
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: aec269c980d90fc4b9175c0fd94c7db2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9427997
+      value: 1.403
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: aec269c980d90fc4b9175c0fd94c7db2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.987961
+      value: 3.355109
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: aec269c980d90fc4b9175c0fd94c7db2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -42,7 +42,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: aec269c980d90fc4b9175c0fd94c7db2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: aec269c980d90fc4b9175c0fd94c7db2, type: 3}
       propertyPath: m_LocalRotation.z
@@ -66,7 +66,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 3d00b688db01502478bf1ee0fa12d7e1, type: 2}
     - target: {fileID: 919132149155446097, guid: aec269c980d90fc4b9175c0fd94c7db2, type: 3}
       propertyPath: m_Name
-      value: SM_Papers_002
+      value: Papers
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aec269c980d90fc4b9175c0fd94c7db2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aec269c980d90fc4b9175c0fd94c7db2, type: 3}
+      propertyPath: m_TagString
+      value: Okunabilir
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -121,7 +129,7 @@ MonoBehaviour:
   player: {fileID: 0}
   noteCanvas: {fileID: 0}
   noteTextAreaUI: {fileID: 0}
-  noteText: BUNU YAZAN TOSUN OKUYANA KOSUN.
+  noteText: "ANNNNANI S\u0130K\u0130Y\u0130M"
   openEvent:
     m_PersistentCalls:
       m_Calls: []

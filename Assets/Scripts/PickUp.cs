@@ -80,7 +80,7 @@ public class PickUp : MonoBehaviour
             Drop(); // Mesafe maksimum mesafeyi aştıysa nesneyi bırak
         }
 
-        rb.velocity = Vector3.zero; // Nesnenin hızını sıfırla
+        rb.linearVelocity = Vector3.zero; // Nesnenin hızını sıfırla
         rb.angularVelocity = Vector3.zero; // Nesnenin açısal hızını sıfırla
 
         // Sağ tıklama ile fırlatma

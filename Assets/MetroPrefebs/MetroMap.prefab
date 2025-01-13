@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 1891963134495165286}
   - component: {fileID: 6415139963966260809}
   - component: {fileID: 7393644100968731820}
+  - component: {fileID: 5780199653669862468}
   m_Layer: 0
   m_Name: metro_map
   m_TagString: Untagged
@@ -150,3 +151,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5780199653669862468
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8795414356422359996}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2904471617274043768, guid: 2625435a733259445b27cf5671734dfc, type: 3}

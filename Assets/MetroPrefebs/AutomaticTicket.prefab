@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1449482908793354182}
   - component: {fileID: 5966568675140389240}
   - component: {fileID: 8185913415452046227}
+  - component: {fileID: 3803286392414785032}
   m_Layer: 0
   m_Name: automatic_ticket_gate
   m_TagString: Untagged
@@ -87,6 +88,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3803286392414785032
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259492493385736280}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1464912303375288570, guid: 2625435a733259445b27cf5671734dfc, type: 3}
 --- !u!1 &2632463360500425755
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,6 +185,7 @@ GameObject:
   - component: {fileID: 5164027086154694411}
   - component: {fileID: 5024697953143641802}
   - component: {fileID: 975006142246030071}
+  - component: {fileID: 898649898373611739}
   m_Layer: 0
   m_Name: automatic_ticket_gate_D
   m_TagString: Untagged
@@ -237,3 +261,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &898649898373611739
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6122693188205892205}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3021303386642573088, guid: 2625435a733259445b27cf5671734dfc, type: 3}
