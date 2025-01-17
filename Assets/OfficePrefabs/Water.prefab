@@ -26,7 +26,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3712, y: 1.3712, z: 1.3712}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3954366849649518273}
@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 3954366849649518273}
   - component: {fileID: 7805299449652700279}
   - component: {fileID: 8473498703587216624}
+  - component: {fileID: 5626889245190469826}
   m_Layer: 0
   m_Name: Water Cooler
   m_TagString: Untagged
@@ -59,13 +60,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2549863087440741750}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0.22999954, y: 0.07484186, z: 1.189204}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.6400013, y: 0.00000023841858, z: 1.5699997}
   m_LocalScale: {x: 72.799995, y: 72.79999, z: 72.79999}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8833139146308494810}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &7805299449652700279
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -119,6 +120,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5626889245190469826
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2549863087440741750}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8190382900902575918, guid: 3d28201fdd7fdff4497b93dc750d8891, type: 3}
 --- !u!1 &5426034365295385283
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,6 +153,7 @@ GameObject:
   - component: {fileID: 608555648188506321}
   - component: {fileID: 7392136485242065572}
   - component: {fileID: 5680610712895432635}
+  - component: {fileID: 272539647021986866}
   m_Layer: 0
   m_Name: Water Jug
   m_TagString: Untagged
@@ -146,7 +170,7 @@ Transform:
   m_GameObject: {fileID: 5426034365295385283}
   serializedVersion: 2
   m_LocalRotation: {x: -0.70710677, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.30252457, y: 1.1150898, z: 1.6994358}
+  m_LocalPosition: {x: 0.115, y: 1.1210003, z: 2.0859997}
   m_LocalScale: {x: 10.642262, y: 10.642262, z: 10.642262}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -205,3 +229,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &272539647021986866
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5426034365295385283}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5416020651366125302, guid: 3d28201fdd7fdff4497b93dc750d8891, type: 3}
