@@ -49,47 +49,64 @@ public class Raycast : MonoBehaviour
         {
             GameObject hitObject = hit.collider.gameObject; // Ray'in çarptýðý objeyi al
 
-            // Nesne etiketi kontrolü
             if (hitText != null)
             {
                 if (hitObject.CompareTag("Silinebilir"))
                 {
-                    hitText.text = $"Envantere ekle: {hitObject.name}"; // Silinebilir nesneye çarptýysa hitText'i güncelle
+                    hitText.text = $"Envantere ekle: {hitObject.name}";
                     if (Input.GetKeyDown(KeyCode.E))
                     {
-                        inventory.AddItem(hitObject); // E tuþuna basýldýðýnda nesneyi envantere ekle
+                        inventory.AddItem(hitObject);
                     }
                 }
                 else if (hitObject.CompareTag("Tasinabilir"))
                 {
-                    hitText.text = $"Al: {hitObject.name}"; // Taþýnabilir nesneye çarptýysa hitText'i güncelle
-                    // Taþýma iþlemi `PickUp` scripti ile zaten kontrol ediliyor.
+                    hitText.text = $"Al: {hitObject.name}";
                 }
                 else if (hitObject.CompareTag("Okunabilir"))
                 {
-                    hitText.text = $"Oku: {hitObject.name}"; // Okunabilir nesneye çarptýysa hitText'i güncelle
+                    hitText.text = $"Oku: {hitObject.name}";
                     NoteController noteController = hitObject.GetComponent<NoteController>();
                     if (noteController != null && Input.GetKeyDown(KeyCode.T))
                     {
                         if (currentNoteController == noteController)
                         {
-                            currentNoteController.HideNote(); // Ayný notu tekrar okuduðunda notu gizle
+                            currentNoteController.HideNote();
                             currentNoteController = null;
                         }
                         else
                         {
                             if (currentNoteController != null)
                             {
-                                currentNoteController.HideNote(); // Baþka bir not okunuyorsa önceki notu gizle
+                                currentNoteController.HideNote();
                             }
                             currentNoteController = noteController;
-                            currentNoteController.ShowNote(); // Yeni notu göster
+                            currentNoteController.ShowNote();
+                        }
+                    }
+                }
+                else if (hitObject.CompareTag("Door"))
+                {
+                    hitText.text = "Kapýyý aç/kapat (F)";
+                    if (Input.GetKeyDown(KeyCode.F))
+                    {
+                        DoorController doorController = hitObject.GetComponent<DoorController>();
+                        if (doorController != null)
+                        {
+                            if (doorController.isOpen)
+                            {
+                                doorController.CloseDoor();
+                            }
+                            else
+                            {
+                                doorController.OpenDoor();
+                            }
                         }
                     }
                 }
                 else
                 {
-                    hitText.text = hitObject.name; // Diðer nesneler için hitText'i güncelle
+                    hitText.text = hitObject.name;
                 }
             }
         }
@@ -97,13 +114,12 @@ public class Raycast : MonoBehaviour
         {
             if (hitText != null)
             {
-                hitText.text = ""; // Ray hiçbir þeye çarpmadýysa hitText'i temizle
+                hitText.text = "";
             }
 
-            // Eðer raycast baþka bir yere gidiyorsa notu kapat
             if (currentNoteController != null)
             {
-                currentNoteController.HideNote(); // Aktif notu gizle
+                currentNoteController.HideNote();
                 currentNoteController = null;
             }
         }

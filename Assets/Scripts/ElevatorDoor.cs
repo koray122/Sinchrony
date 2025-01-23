@@ -2,43 +2,63 @@ using UnityEngine;
 
 public class ElevatorDoor : MonoBehaviour
 {
-    public Transform leftDoor; // Sol kapýnýn Transform bileþeni
-    public Transform rightDoor; // Sað kapýnýn Transform bileþeni
-    public Vector3 leftClosedLocalPosition; // Sol kapýnýn kapalý yerel pozisyonu
-    public Vector3 rightClosedLocalPosition; // Sað kapýnýn kapalý yerel pozisyonu
-    public Vector3 leftOpenLocalPosition; // Sol kapýnýn açýk yerel pozisyonu
-    public Vector3 rightOpenLocalPosition; // Sað kapýnýn açýk yerel pozisyonu
-    public float doorSpeed = 2f; // Kapýlarýn hareket hýzý
-    public float doorCloseDelay = 2f; // Kapýlarýn kapanma gecikmesi
+    public Animator leftDoorAnimator; // Sol kapýnýn Animator bileþeni  
+    public Animator rightDoorAnimator; // Sað kapýnýn Animator bileþeni  
+    public float doorCloseDelay = 2f; // Kapýlarýn kapanma gecikmesi  
 
-    private bool isClosing = false; // Kapýlarýn kapanýp kapanmadýðýný takip eder
+    private bool isClosing = false; // Kapýlarýn kapanýp kapanmadýðýný takip eder  
+    public bool AreDoorsOpen { get; private set; } = false; // Kapýlarýn açýk mý olduðunu tutan deðiþken  
+
+    void Start()
+    {
+        // Baþlangýçta kapýlarýn kapanýk olduðuna emin ol  
+        leftDoorAnimator.SetBool("IsClosing", false);
+        rightDoorAnimator.SetBool("IsClosing", false);
+        leftDoorAnimator.SetBool("IsOpening", false);
+        rightDoorAnimator.SetBool("IsOpening", false);
+    }
 
     void Update()
     {
         if (isClosing)
         {
-            // Kapýlarý kapalý yerel pozisyona doðru hareket ettir
-            leftDoor.localPosition = Vector3.MoveTowards(leftDoor.localPosition, leftClosedLocalPosition, doorSpeed * Time.deltaTime);
-            rightDoor.localPosition = Vector3.MoveTowards(rightDoor.localPosition, rightClosedLocalPosition, doorSpeed * Time.deltaTime);
-
-            // Kapýlar kapalý yerel pozisyona ulaþtýðýnda isClosing bayraðýný false yap
-            if (leftDoor.localPosition == leftClosedLocalPosition && rightDoor.localPosition == rightClosedLocalPosition)
+            // Kapýlar kapalý pozisyona ulaþtýðýnda isClosing bayraðýný false yap  
+            if (leftDoorAnimator.GetCurrentAnimatorStateInfo(0).IsName("LeftDoorClose") &&
+                rightDoorAnimator.GetCurrentAnimatorStateInfo(0).IsName("RightDoorClose"))
             {
                 isClosing = false;
-                Invoke("OpenDoors", doorCloseDelay); // Belirli bir süre sonra kapýlarý aç
+                AreDoorsOpen = false; // Kapýlar kapalý  
+            }
+        }
+        else
+        {
+            // Kapýlar açýldýysa durum güncelle  
+            if (leftDoorAnimator.GetCurrentAnimatorStateInfo(0).IsName("LeftDoorOpen") &&
+                rightDoorAnimator.GetCurrentAnimatorStateInfo(0).IsName("RightDoorOpen"))
+            {
+                AreDoorsOpen = true; // Kapýlar açýk  
             }
         }
     }
 
     public void CloseDoors()
     {
-        isClosing = true; // Kapýlarý kapatmaya baþla
+        if (!isClosing) // Zaten kapanýyorsa kontrol et  
+        {
+            isClosing = true; // Kapýlarý kapatmaya baþla  
+            leftDoorAnimator.SetBool("IsClosing", true);
+            rightDoorAnimator.SetBool("IsClosing", true);
+            leftDoorAnimator.SetBool("IsOpening", false);
+            rightDoorAnimator.SetBool("IsOpening", false);
+        }
     }
 
-    private void OpenDoors()
+    public void OpenDoors()
     {
-        // Kapýlarý açýk yerel pozisyona doðru hareket ettir
-        leftDoor.localPosition = Vector3.MoveTowards(leftDoor.localPosition, leftOpenLocalPosition, doorSpeed * Time.deltaTime);
-        rightDoor.localPosition = Vector3.MoveTowards(rightDoor.localPosition, rightOpenLocalPosition, doorSpeed * Time.deltaTime);
+        if (!isClosing && !AreDoorsOpen) // Halihazýrda kapanýyorsa ve kapýlar kapalýysa kontrol et  
+        {
+            leftDoorAnimator.SetBool("IsOpening", true);
+            rightDoorAnimator.SetBool("IsOpening", true);
+        }
     }
 }

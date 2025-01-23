@@ -12,6 +12,8 @@ TagManager:
   - Inventory
   - Item
   - Button
+  - InsideButton
+  - Door
   layers:
   - Default
   - TransparentFX
